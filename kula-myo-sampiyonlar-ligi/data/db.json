@@ -1,0 +1,37 @@
+{
+  "teams": [
+    {"id": 1, "name": "Kırmızı Şimşekler", "shortName": "KŞ", "logo": "⚡"},
+    {"id": 2, "name": "Mavi Fırtına", "shortName": "MF", "logo": "🌊"},
+    {"id": 3, "name": "Yeşil Yıldızlar", "shortName": "YY", "logo": "⭐"},
+    {"id": 4, "name": "Sarı Kaplanlar", "shortName": "SK", "logo": "🐯"}
+  ],
+  "players": [
+    {"id": 1, "name": "Ahmet Yılmaz", "teamId": 1, "goals": 5, "number": 10},
+    {"id": 2, "name": "Mehmet Demir", "teamId": 1, "goals": 3, "number": 7},
+    {"id": 3, "name": "Ali Kaya", "teamId": 2, "goals": 4, "number": 9},
+    {"id": 4, "name": "Hasan Çelik", "teamId": 2, "goals": 2, "number": 11},
+    {"id": 5, "name": "Emre Şahin", "teamId": 3, "goals": 6, "number": 10},
+    {"id": 6, "name": "Burak Aydın", "teamId": 3, "goals": 1, "number": 8},
+    {"id": 7, "name": "Can Arslan", "teamId": 4, "goals": 3, "number": 9},
+    {"id": 8, "name": "Deniz Koç", "teamId": 4, "goals": 2, "number": 7}
+  ],
+  "standings": [
+    {"teamId": 1, "played": 3, "won": 2, "drawn": 1, "lost": 0, "goalsFor": 8, "goalsAgainst": 3, "points": 7},
+    {"teamId": 2, "played": 3, "won": 2, "drawn": 0, "lost": 1, "goalsFor": 6, "goalsAgainst": 4, "points": 6},
+    {"teamId": 3, "played": 3, "won": 1, "drawn": 1, "lost": 1, "goalsFor": 7, "goalsAgainst": 5, "points": 4},
+    {"teamId": 4, "played": 3, "won": 0, "drawn": 0, "lost": 3, "goalsFor": 3, "goalsAgainst": 9, "points": 0}
+  ],
+  "liveMatch": {
+    "homeTeamId": 1,
+    "awayTeamId": 3,
+    "homeScore": 2,
+    "awayScore": 1,
+    "minute": 65,
+    "isLive": true,
+    "status": "İkinci Yarı"
+  },
+  "admin": {
+    "username": "admin",
+    "password": "kula2026"
+  }
+}

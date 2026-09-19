@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - KULA MYO Şampiyonlar Ligi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚙️</text></svg>">
+</head>
+<body>
+    <div id="particles"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">⚽ KULA MYO ŞAMPİYONLAR LİGİ</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="gol-krallari.html">Gol Kralları</a></li>
+                <li><a href="admin.html" class="active">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content container">
+        
+        <!-- Login Section -->
+        <div id="login-section" class="login-container fade-in-up">
+            <h2 class="mb-4">🔐 Admin Girişi</h2>
+            <div class="form-group">
+                <label for="admin-username">Kullanıcı Adı</label>
+                <input type="text" id="admin-username" class="form-input">
+            </div>
+            <div class="form-group">
+                <label for="admin-password">Şifre</label>
+                <input type="password" id="admin-password" class="form-input">
+            </div>
+            <div id="login-error" style="color: var(--accent-red); display: none; margin-bottom: 15px;">Hatalı giriş!</div>
+            <button id="login-btn" class="btn btn-primary btn-block">Giriş Yap</button>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-dashboard" class="admin-dashboard" style="display:none;">
+            <div class="admin-header fade-in">
+                <h2>⚙️ Yönetim Paneli</h2>
+                <button id="logout-btn" class="btn btn-danger">Çıkış Yap</button>
+            </div>
+            
+            <div class="admin-grid">
+                
+                <!-- Section 1: Canlı Skor Yönetimi -->
+                <div class="admin-card fade-in-up stagger-1" id="admin-live-section">
+                    <h3 class="admin-card-title">📺 Canlı Skor</h3>
+                    <div class="live-score-form">
+                        <select id="live-home-team" class="form-select">
+                            <!-- JS populates -->
+                        </select>
+                        
+                        <div class="score-inputs">
+                            <input type="number" id="live-home-score" class="form-input" min="0" value="0">
+                            <span>VS</span>
+                            <input type="number" id="live-away-score" class="form-input" min="0" value="0">
+                        </div>
+                        
+                        <select id="live-away-team" class="form-select">
+                            <!-- JS populates -->
+                        </select>
+                        
+                        <input type="number" id="live-minute" class="form-input" min="0" max="120" placeholder="Dakika">
+                        
+                        <select id="live-status" class="form-select">
+                            <option value="Maç Bekleniyor">Maç Bekleniyor</option>
+                            <option value="İlk Yarı">İlk Yarı</option>
+                            <option value="Devre Arası">Devre Arası</option>
+                            <option value="İkinci Yarı">İkinci Yarı</option>
+                            <option value="Maç Bitti">Maç Bitti</option>
+                        </select>
+                        
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="live-is-live">
+                            <label for="live-is-live">Canlı Yayın</label>
+                        </div>
+                        
+                        <button id="update-live-btn" class="btn btn-primary btn-block">📺 Skoru Güncelle</button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Takım Yönetimi -->
+                <div class="admin-card fade-in-up stagger-2">
+                    <h3 class="admin-card-title">🏟️ Takım Ekle</h3>
+                    <div class="form-group">
+                        <input type="text" id="team-name-input" class="form-input" placeholder="Takım Adı">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="team-short-input" class="form-input" placeholder="Kısa Ad (2-3 harf)">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="team-logo-input" class="form-input" placeholder="Logo (emoji)" maxlength="2">
+                    </div>
+                    <button id="add-team-btn" class="btn btn-primary btn-block">+ Takım Ekle</button>
+                    
+                    <div id="teams-list" class="item-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Section 3: Oyuncu Yönetimi -->
+                <div class="admin-card fade-in-up stagger-3">
+                    <h3 class="admin-card-title">👤 Oyuncu Ekle</h3>
+                    <div class="form-group">
+                        <input type="text" id="player-name-input" class="form-input" placeholder="Oyuncu Adı">
+                    </div>
+                    <div class="form-group">
+                        <select id="player-team-select" class="form-select">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="player-number-input" class="form-input" placeholder="Forma No">
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="player-goals-input" class="form-input" min="0" placeholder="Gol Sayısı" value="0">
+                    </div>
+                    <button id="add-player-btn" class="btn btn-primary btn-block">+ Oyuncu Ekle</button>
+                    
+                    <div id="players-list" class="item-list">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Section 4: Puan Tablosu Düzenleme -->
+                <div class="admin-card fade-in-up stagger-4">
+                    <h3 class="admin-card-title">📊 Puan Tablosu Düzenle</h3>
+                    <div class="form-group">
+                        <select id="standings-team-select" class="form-select">
+                            <!-- Populated by JS -->
+                        </select>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                        <input type="number" id="st-played" class="form-input" placeholder="Oynanan">
+                        <input type="number" id="st-points" class="form-input" placeholder="Puan">
+                        <input type="number" id="st-won" class="form-input" placeholder="Galibiyet">
+                        <input type="number" id="st-drawn" class="form-input" placeholder="Beraberlik">
+                        <input type="number" id="st-lost" class="form-input" placeholder="Mağlubiyet">
+                        <input type="number" id="st-gf" class="form-input" placeholder="Atılan Gol">
+                        <input type="number" id="st-ga" class="form-input" placeholder="Yenen Gol">
+                    </div>
+                    <button id="update-standings-btn" class="btn btn-primary btn-block mt-4">💾 Kaydet</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="toast-container"></div>
+
+    <footer>
+        © 2026 KULA MYO Şampiyonlar Ligi | Tüm hakları saklıdır
+    </footer>
+
+    <script src="js/animations.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
